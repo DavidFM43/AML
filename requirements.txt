@@ -1,0 +1,8 @@
+numpy
+torch
+pandas
+kornia
+torchvision
+fvcore
+wandb
+python-dotenv
