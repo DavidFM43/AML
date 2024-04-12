@@ -7,7 +7,7 @@ import torch.nn.functional as F
 import kornia
 
 from collections import OrderedDict
-from collections import Iterable
+from collections.abc import Iterable
 from utils import *
 
 class Buffer(nn.Module):

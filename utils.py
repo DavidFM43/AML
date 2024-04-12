@@ -3,7 +3,7 @@ import copy
 import numpy as np
 from collections import OrderedDict as OD
 from collections import defaultdict as DD
-from collections import Iterable
+from collections.abc import Iterable
 
 import torch
 import torch.nn as nn
