@@ -124,7 +124,8 @@ def make_val_from_train(dataset, split=.9):
 def get_data_and_tfs(args):
     dataset = {'cifar10' : CIFAR10,
                'cifar100': CIFAR100,
-               'miniimagenet'  : MiniImagenet}[args.dataset]
+               #'miniimagenet'  : MiniImagenet
+               }[args.dataset]
 
     if args.n_tasks == -1:
         args.n_tasks = dataset.default_n_tasks
@@ -152,7 +153,7 @@ def get_data_and_tfs(args):
     train_sampler = ContinualSampler(train_ds, args.n_tasks, smooth=args.smooth)
     train_loader  = torch.utils.data.DataLoader(
         train_ds,
-        num_workers=0,
+        num_workers=4,
         sampler=train_sampler,
         batch_size=args.batch_size,
         pin_memory=True
@@ -163,7 +164,7 @@ def get_data_and_tfs(args):
         test_loader = None
         val_loader  = torch.utils.data.DataLoader(
             val_ds,
-            num_workers=0,
+            num_workers=4,
             batch_size=128,
             sampler=val_sampler,
             pin_memory=True
