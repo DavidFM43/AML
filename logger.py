@@ -4,6 +4,9 @@ import pickle
 import numpy as np
 
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 class Logger:
     def __init__(self, args, base_dir='outputs', save_every=30):
@@ -14,6 +17,7 @@ class Logger:
 
         if args.wandb_log == 'online':
             import wandb
+            wandb.login(key=os.environ['WANDB_API_KEY'])
             wandb.init(project=args.wandb_project, name=args.exp_name, config=args)
             self.wandb = wandb
         else:
